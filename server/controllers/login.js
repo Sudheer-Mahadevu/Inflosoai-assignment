@@ -1,12 +1,14 @@
 const User = require('../Model/user')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const login = async function(req,res){
     const query = await User.findOne({email : req.body.email});
 
     if(query == null) return res.status(404).send({data: "No user found"})
     
-    if(query.password != req.body.password){
+    const passwordsMatch = await bcrypt.compare(req.body.password,query.password)
+    if(!passwordsMatch){
         return res.status(401).send({data: "Passwords donot match"})
     }
 

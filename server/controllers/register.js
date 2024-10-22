@@ -1,20 +1,25 @@
 const User = require("../Model/user")
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
 
 const register = async function (req, res){
     
     // Find if a user with the same email or name already exits
     let  query = await User.findOne({email : req.body.email })
-    if(query != null) return res.status(402).send({data : "user email already exists"})
+    if(query != null) return res.status(401).send({data : "user email already exists"})
     
-    query = await User.findOne({email : req.body.namel })
-    if(query != null) return res.status(402).send({data : "user name already exists"})
-
-    User.create({
+    query = await User.findOne({name : req.body.name })
+    if(query != null) return res.status(401).send({data : "user name already exists"})
+    
+    bcrypt.hash(req.body.password,12,(err,passwordHash)=>{
+        User.create({
         name : req.body.name,
         email : req.body.email,
-        password: req.body.password // TODO : This has to be hashed and stored
-    })
+        password: passwordHash 
+        }) // error handling not able to insert
+    }
+    )
+    
 
     // Generate JWT
     const token = jwt.sign(
