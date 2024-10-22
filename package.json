@@ -1,0 +1,22 @@
+{
+  "name": "inflosoai-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sudheer-Mahadevu/Inflosoai-assignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sudheer-Mahadevu/Inflosoai-assignment/issues"
+  },
+  "homepage": "https://github.com/Sudheer-Mahadevu/Inflosoai-assignment#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
