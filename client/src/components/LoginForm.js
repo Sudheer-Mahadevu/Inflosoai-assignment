@@ -1,22 +1,28 @@
-import { Button, Stack, TextField, Typography,InputAdornment,IconButton, OutlinedInput,InputLabel, FormControl } from "@mui/material";
+import { Button, Stack, TextField, Typography,InputAdornment,IconButton, OutlinedInput,InputLabel, FormControl, FormControlLabel, Checkbox } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import * as React from 'react';
 
-export default function SignupForm(){
-
+export default function LoginForm(){
+    const [loginbyName,setLoginbyName] = React.useState(true)
     const [showPassword, setShowPassword] = React.useState(false);
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-
+     
     return(
         <Stack alignItems={"center"} spacing={3}>
         <Typography variant="h3" sx={{fontFamily:"cursive",color:"#5ff241" ,marginBottom:2}}>
-            Signup
+            Login
         </Typography>
+        {
+            loginbyName ? <TextField required sx={{width:400}} label="User name"/> :
+            <TextField required sx={{width:400}} label="Email"/>
+        }
         
-        <TextField required sx={{width:400}} label="User name"/>
-        <TextField required sx={{width:400}} label="Email"/> 
+        <FormControlLabel control={<Checkbox/>} 
+        onChange={()=>setLoginbyName(!loginbyName)}
+        label = "login by email"/>
+
         <FormControl>
         <InputLabel htmlFor="outlined-adornment-password">Password *</InputLabel>
         <OutlinedInput
@@ -36,8 +42,8 @@ export default function SignupForm(){
             label="Password *"
           />
           </FormControl>
-        <TextField required type="password" sx={{width:400}} label="confirm password"/>
-        <Button variant="contained" sx={{color : "#5ff241"}}>Signup</Button>
+
+        <Button variant="contained" sx={{color : "#5ff241"}}>Login</Button>
         </Stack>
 
     )
