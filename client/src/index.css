@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.logo{
+  margin-top: 0;
+  font-family: "Updock", cursive;
+  color: #f031d6;
+  font-size:5em ;
+}
+
+.navbar{
+  background-color:rgb(122, 209, 236);
+  margin: 0 ;
+}
